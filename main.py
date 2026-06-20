@@ -37,19 +37,21 @@ def callback_inline(call):
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=نص_البرامج, parse_mode="Markdown")
         
     elif call.data == "numbers":
-        # إنشاء أزرار داخلية مخصصة للأرقام والشروحات لتظهر للمستخدم
+        # لوحة أزرار قسم الأرقام (عربية وأجنبية)
         markup_numbers = types.InlineKeyboardMarkup(row_width=1)
         
-        # يمكنك تعديل هذه الروابط والأزرار ووضع روابط قناتك أو الأرقام مباشرة
-        btn_num1 = types.InlineKeyboardButton("🇺🇸 احصل على رقم أمريكي جاهز", url="https://t.me/your_channel_username") 
-        btn_num2 = types.InlineKeyboardButton("🤖 بوت توليد الأرقام المجانية", url="https://t.me/your_bot_username")
+        # أزرار الأرقام العربية والأجنبية - يمكنك استبدال الروابط بروابط قناتك أو المواقع التي تقدم الخدمة
+        btn_arabic = types.InlineKeyboardButton("🇸🇦 🇪🇬 🇾🇪 قسم الأرقام العربية", url="https://t.me/your_channel_username") 
+        btn_foreign = types.InlineKeyboardButton("🇺🇸 احصل على رقم أمريكي جاهز", url="https://t.me/your_channel_username") 
+        btn_bot = types.InlineKeyboardButton("🤖 بوت توليد الأرقام المجانية", url="https://t.me/your_bot_username")
         btn_back = types.InlineKeyboardButton("⬅️ العودة للقائمة الرئيسية", callback_data="back_to_main")
         
-        markup_numbers.add(btn_num1, btn_num2, btn_back)
+        markup_numbers.add(btn_arabic, btn_foreign, btn_bot, btn_back)
         
         نص_الأرقام = (
             "📱 **قسم الأرقام المجانية والشروحات:**\n\n"
-            "إليك الأرقام المتوفرة حالياً والشروحات الخاصة بها، اضغط على الزر المطلوب بالأسفل للحصول على الرقم أو الشرح المستهدف👇:"
+            "مرحباً بك في قسم الأرقام المتجدد! تم إضافة خيارات مخصصة للأرقام العربية والأجنبية.\n\n"
+            "اختر القسم المطلوب من الأسفل للحصول على الرقم أو الشرح المستهدف👇:"
         )
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=نص_الأرقام, reply_markup=markup_numbers, parse_mode="Markdown")
 
